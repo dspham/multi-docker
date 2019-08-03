@@ -1,0 +1,26 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t dspham/react-test -f ./client/Dockerfile.dev ./client/Dockerfile.dev .
+
+script:
+  - docker run dspham/react-test npm test -- -- coverage
+
+after_success:
+  - docker build -t dspham/multi-client ./client
+  - docker build -t dspham/multi-nginx ./nginx
+  - docker build -t dspham/multi-server ./server
+  - docker build -t dspham/multi-worker ./worker
+  # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # we take these images and push them to docker hub
+  - docker push dspham/multi-client
+  - docker push dspham/multi-nginx
+  - docker pus dspham/multi-server
+  - docker push dspham/multi-worker
+
+
+  
+
