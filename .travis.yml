@@ -18,9 +18,9 @@ after_success:
   # we take these images and push them to docker hub
   - docker push dspham/multi-client
   - docker push dspham/multi-nginx
-  - docker pus dspham/multi-server
+  - docker push dspham/multi-server
   - docker push dspham/multi-worker
 
 
-  
+
 
