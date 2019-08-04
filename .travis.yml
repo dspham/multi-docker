@@ -17,8 +17,7 @@ after_success:
   - docker build -t dspham/multi-server ./server
   - docker build -t dspham/multi-worker ./worker
   # Log in to the docker CLI
-  # - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - echo "$DOCKER_PASSWORD" | docker login -u "dspham" --password "Cayetana99."
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # we take these images and push them to docker hub
   - docker push dspham/multi-client
   - docker push dspham/multi-nginx
