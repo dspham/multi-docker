@@ -5,7 +5,7 @@ services:
 before_install:
   - docker build -t dspham/react-test -f ./client/Dockerfile.dev ./client/Dockerfile.dev .
 
-# script:
+script:
   - docker run -e CI=true dspham/react-test npm run test
   # - docker run dspham/react-test npm test -- -- coverage -e CI=true
   # - docker run -e CI=true dspham/react-test npm run test -- --watchAll=false
